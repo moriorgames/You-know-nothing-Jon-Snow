@@ -16,7 +16,7 @@ CMakeCache.txt
 CMakeFiles/
 Makefile
 cmake_install.cmake
-MachineLearning.cbp
+MoriorGamesDNA.cbp
 
 # Build
 src/libmoriorgames_dna.a
