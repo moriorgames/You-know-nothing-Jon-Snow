@@ -7,6 +7,7 @@ include_directories(
 add_executable(
         testsuite
         test.cpp
+        MoriorGames/Containers/PopulationTest.cpp
         MoriorGames/DTO/ConfigurationTest.cpp
         MoriorGames/DTO/DNATest.cpp
         MoriorGames/Parsers/FileParserTest.cpp
