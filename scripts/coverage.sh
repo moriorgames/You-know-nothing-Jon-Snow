@@ -15,5 +15,5 @@ make
 # Generate the coverage report with some options
 # 'Html' output with 'HtmlDetails'. 'Summary' at the end and to 'Output' file
 gcovr -r $(pwd) --html --html-details -s \
---exclude 'Mocks' --exclude 'tests' \
+--exclude 'Mocks' --exclude 'tests' --exclude 'lib' \
 -o "$(pwd)/coverage/index.html"

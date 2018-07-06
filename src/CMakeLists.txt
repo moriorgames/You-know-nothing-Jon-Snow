@@ -4,6 +4,7 @@ MESSAGE(STATUS "Created Library Moriorgames DNA")
 add_library(
         moriorgames_dna
         MoriorGames/DTO/Configuration.cpp
+        MoriorGames/DTO/DNA.cpp
         MoriorGames/Parsers/FileParser.cpp
         MoriorGames/Parsers/JsonParser.cpp
 )

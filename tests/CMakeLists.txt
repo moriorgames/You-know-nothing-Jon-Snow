@@ -8,7 +8,9 @@ add_executable(
         testsuite
         test.cpp
         MoriorGames/DTO/ConfigurationTest.cpp
-        MoriorGames/Parsers/FileParserTest.cpp)
+        MoriorGames/DTO/DNATest.cpp
+        MoriorGames/Parsers/FileParserTest.cpp
+)
 
 target_link_libraries(
         testsuite
