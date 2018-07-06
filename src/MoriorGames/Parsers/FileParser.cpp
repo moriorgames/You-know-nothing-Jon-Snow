@@ -1,7 +1,21 @@
 #include "FileParser.h"
-#include <string>
 
-void FileParser::sayHello()
+FileParser::FileParser(std::string json)
+    : JsonParser(json)
 {
-    printf("\nHello\n");
+}
+
+Configuration *FileParser::parse()
+{
+    if (document.IsObject()) {
+
+        return new Configuration(
+            getString(document, "target"),
+            getInt(document, "population"),
+            getInt(document, "maxGenerations"),
+            getDouble(document, "mutationRate")
+        );
+    }
+
+    return nullptr;
 }

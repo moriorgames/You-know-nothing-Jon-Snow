@@ -5,6 +5,7 @@ add_library(
         moriorgames_dna
         MoriorGames/DTO/Configuration.cpp
         MoriorGames/Parsers/FileParser.cpp
+        MoriorGames/Parsers/JsonParser.cpp
 )
 
 target_link_libraries(moriorgames_dna)

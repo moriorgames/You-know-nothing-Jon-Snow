@@ -3,9 +3,7 @@
 
 int main()
 {
-    auto parser = new FileParser;
     printf("Hello Jon SNow\n");
-    parser->sayHello();
 
     return 0;
 }

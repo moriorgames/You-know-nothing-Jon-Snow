@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 # Remove previous coverage files
+rm -rf CMakeFiles/*
+rm -rf src/CMakeFiles/*
 rm -rf tests/CMakeFiles/*
 rm -rf coverage/index*
 touch coverage/index.html

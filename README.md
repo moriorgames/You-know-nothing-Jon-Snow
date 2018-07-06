@@ -10,7 +10,7 @@ To run the project:
 $ cmake .
 $ make
 $ ./main
-$ camke . && make && ./main
+$ cmake . && make && ./main
 ```
 
 ## How it works

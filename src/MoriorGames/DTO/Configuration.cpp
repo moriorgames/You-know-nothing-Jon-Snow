@@ -27,5 +27,15 @@ double Configuration::getMutationRate() const
 
 void Configuration::print()
 {
-
+    printf("========= Configuration: \n"
+           " - target %s\n"
+           " - population %i\n"
+           " - maxGenerations %i\n"
+           " - mutationRate %f\n"
+           " \n",
+           target.c_str(),
+           population,
+           maxGenerations,
+           mutationRate
+    );
 }
