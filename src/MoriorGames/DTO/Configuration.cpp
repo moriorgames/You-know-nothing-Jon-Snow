@@ -1,6 +1,6 @@
 #include "Configuration.h"
 
-Configuration::Configuration(std::string target, int population, int maxGenerations, double mutationRate)
+Configuration::Configuration(std::string target, int population, int maxGenerations, int mutationRate)
     : target{target}, population{population}, maxGenerations{maxGenerations}, mutationRate{mutationRate}
 {
 }
@@ -20,7 +20,7 @@ int Configuration::getMaxGenerations() const
     return maxGenerations;
 }
 
-double Configuration::getMutationRate() const
+int Configuration::getMutationRate() const
 {
     return mutationRate;
 }
@@ -31,7 +31,7 @@ void Configuration::print()
            " - target %s\n"
            " - population %i\n"
            " - maxGenerations %i\n"
-           " - mutationRate %f\n"
+           " - mutationRate %i\n"
            " \n",
            target.c_str(),
            population,

@@ -14,16 +14,12 @@ public:
     void process();
 
 private:
-    int maxGenerations;
-    double mutationRate;
-
+    Configuration *configuration;
     FitnessCalculator fitnessCalculator;
     bool finished = false;
     int generations = 0;
     std::string bestTarget = "";
     std::vector<DNA *> dnas;
-
-    void initialize();
 };
 
 #endif

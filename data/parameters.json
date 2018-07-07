@@ -1,6 +1,6 @@
 {
   "target": "hello dna",
-  "population": 10,
+  "population": 20,
   "maxGenerations": 1,
-  "mutationRate": 0.01
+  "mutationRate": 1
 }

@@ -1,5 +1,5 @@
 #include "Mutator.h"
-#include <random>
+#include "Randomizer.h"
 
 void Mutator::mutate(DNA *dna, int mutationRate)
 {
@@ -7,7 +7,7 @@ void Mutator::mutate(DNA *dna, int mutationRate)
         if (mutationRate >= 100) {
             dna->setGene(i, getRandomChar());
         } else {
-            auto mutation = rand() % 100;
+            auto mutation = Randomizer::randomize(0, 100);
             if (mutation <= mutationRate) {
                 dna->setGene(i, getRandomChar());
             }
@@ -16,7 +16,8 @@ void Mutator::mutate(DNA *dna, int mutationRate)
 }
 char Mutator::getRandomChar()
 {
-    char ALLOWED_CHARS[] = "abcdefghijklmnomprstuvwxyz ABCDEFGHIJKLMNOMPRSTUVWXYZ,.;";
+//    char ALLOWED_CHARS[] = "abcdefghijklmnomprstuvwxyz ABCDEFGHIJKLMNOMPRSTUVWXYZ,.;";
+    char ALLOWED_CHARS[] = "abcdefghijklmnomprstuvwxyz";
 
-    return ALLOWED_CHARS[rand() % strlen(ALLOWED_CHARS)];
+    return ALLOWED_CHARS[Randomizer::randomize(0, strlen(ALLOWED_CHARS) - 1)];
 }

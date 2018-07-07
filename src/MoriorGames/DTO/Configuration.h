@@ -6,18 +6,18 @@
 class Configuration
 {
 public:
-    Configuration(std::string target, int population, int maxGenerations, double mutationRate);
+    Configuration(std::string target, int population, int maxGenerations, int mutationRate);
     const std::string &getTarget() const;
     int getPopulation() const;
     int getMaxGenerations() const;
-    double getMutationRate() const;
+    int getMutationRate() const;
     void print();
 
 private:
     std::string target;
     int population;
     int maxGenerations;
-    double mutationRate;
+    int mutationRate;
 };
 
 #endif

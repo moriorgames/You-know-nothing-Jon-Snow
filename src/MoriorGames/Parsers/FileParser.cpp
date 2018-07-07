@@ -13,7 +13,7 @@ Configuration *FileParser::parse()
             getString(document, "target"),
             getInt(document, "population"),
             getInt(document, "maxGenerations"),
-            getDouble(document, "mutationRate")
+            getInt(document, "mutationRate")
         );
     }
 

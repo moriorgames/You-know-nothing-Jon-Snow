@@ -16,6 +16,17 @@ const std::vector<char> &DNA::getGenes() const
 {
     return genes;
 }
+
+double DNA::getFitness() const
+{
+    return fitness;
+}
+
+void DNA::setFitness(double fitness)
+{
+    DNA::fitness = fitness;
+}
+
 std::string DNA::getPhrase()
 {
     std::string phrase(genes.begin(), genes.end());
