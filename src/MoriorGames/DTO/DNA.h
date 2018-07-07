@@ -9,6 +9,7 @@ class DNA
 public:
     explicit DNA(int length);
     void setGene(int index, char value);
+    const std::vector<char> &getGenes() const;
     std::string getPhrase();
 
 private:
