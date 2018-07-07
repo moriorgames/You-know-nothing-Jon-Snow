@@ -9,7 +9,7 @@ class Mutator
 {
 public:
     explicit Mutator() = default;
-    void mutate(DNA &dna, int mutationRate);
+    void mutate(DNA *, int mutationRate);
 
 private:
     char getRandomChar();

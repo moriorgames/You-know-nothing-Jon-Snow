@@ -21,7 +21,7 @@ private:
     bool finished = false;
     int generations = 0;
     std::string bestTarget = "";
-    std::vector<DNA > dnas;
+    std::vector<DNA *> dnas;
 
     void initialize();
 };

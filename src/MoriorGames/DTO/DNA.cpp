@@ -3,7 +3,7 @@
 DNA::DNA(int length)
 {
     for (int i = 0; i < length; ++i) {
-        genes.push_back('.');
+        genes.push_back(' ');
     }
 }
 

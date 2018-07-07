@@ -10,7 +10,7 @@ Population::Population(Configuration *config)
     Mutator mutator;
     // Initialize
     for (int i = 0; i < config->getPopulation(); ++i) {
-        DNA dna(config->getTarget().length());
+        auto dna = new DNA(config->getTarget().length());
         dnas.push_back(dna);
         mutator.mutate(dna, 100);
     }
@@ -22,7 +22,8 @@ void Population::process()
         printf("==: Generation %i :==\n", generation);
         // Calculate fitness
         for (auto dna:dnas) {
-            printf("- %s\n", dna.getPhrase().c_str());
+            auto fitness = fitnessCalculator.calculate(dna);
+            printf("- Gen: %s Fitness: %f\n", dna->getPhrase().c_str(), fitness);
         }
 
         // Natural selection

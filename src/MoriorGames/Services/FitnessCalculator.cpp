@@ -6,9 +6,10 @@ FitnessCalculator::FitnessCalculator(std::string target)
     this->target = data;
 }
 
-double FitnessCalculator::calculate(DNA dna)
+double FitnessCalculator::calculate(DNA *dna)
 {
-    auto genes = dna.getGenes();
+    auto genes = dna->getGenes();
+    double totalGenes = (double)genes.size();
     int matches = 0;
     for (int i = 0; i < genes.size(); ++i) {
         if (genes[i] == target[i]) {
@@ -16,5 +17,5 @@ double FitnessCalculator::calculate(DNA dna)
         }
     }
 
-    return matches / (double)genes.size();
+    return matches / totalGenes;
 }
