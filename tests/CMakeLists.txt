@@ -11,7 +11,8 @@ add_executable(
         MoriorGames/DTO/ConfigurationTest.cpp
         MoriorGames/DTO/DNATest.cpp
         MoriorGames/Parsers/FileParserTest.cpp
-        MoriorGames/Services/FitnessCalculatorTest.cpp)
+        MoriorGames/Services/FitnessCalculatorTest.cpp
+)
 
 target_link_libraries(
         testsuite

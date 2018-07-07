@@ -8,5 +8,5 @@ BOOST_AUTO_TEST_CASE(should_be_able_to_instantiate_population_container)
     int populationQ = 10;
     int maxGenerations = 20;
     double mutationRate = .12;
-    auto population = new Population(new Configuration(target, populationQ, maxGenerations, mutationRate));
+    Population population(new Configuration(target, populationQ, maxGenerations, mutationRate));
 }

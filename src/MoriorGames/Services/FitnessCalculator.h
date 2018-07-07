@@ -8,8 +8,8 @@
 class FitnessCalculator
 {
 public:
-    FitnessCalculator(std::string target);
-    double calculate(DNA *);
+    explicit FitnessCalculator(std::string target);
+    double calculate(DNA dna);
 
 private:
     std::vector<char> target;

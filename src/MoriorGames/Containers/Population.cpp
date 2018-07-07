@@ -1,7 +1,9 @@
 #include "Population.h"
 
 Population::Population(Configuration *config)
-    : target{config->getTarget()}, populationQuantity{config->getPopulation()},
-      maxGenerations{config->getMaxGenerations()}, mutationRate{config->getMutationRate()}
+    : fitnessCalculator(config->getTarget()),
+      Kpopulation{config->getPopulation()},
+      maxGenerations{config->getMaxGenerations()},
+      mutationRate{config->getMutationRate()}
 {
 }
