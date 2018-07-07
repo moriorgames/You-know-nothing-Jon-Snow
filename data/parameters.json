@@ -1,6 +1,6 @@
 {
-  "target": "hello dna",
-  "population": 20,
-  "maxGenerations": 1,
+  "target": "you know nothing, jon snow",
+  "population": 1000,
+  "maxGenerations": 1000,
   "mutationRate": 1
 }
