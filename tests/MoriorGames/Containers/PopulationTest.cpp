@@ -5,8 +5,5 @@
 BOOST_AUTO_TEST_CASE(should_be_able_to_instantiate_population_container)
 {
     std::string target = "Hello world";
-    int populationQ = 10;
-    int maxGenerations = 20;
-    double mutationRate = .12;
-    Population population(new Configuration(target, populationQ, maxGenerations, mutationRate));
+    Population population(new Configuration(target, 500, 100, 12, 2, 100));
 }
