@@ -11,9 +11,9 @@ class Population
 {
 public:
     explicit Population(Configuration *);
+    void process();
 
 private:
-    int Kpopulation;
     int maxGenerations;
     double mutationRate;
 
@@ -21,7 +21,9 @@ private:
     bool finished = false;
     int generations = 0;
     std::string bestTarget = "";
-    std::vector<DNA *> dnas;
+    std::vector<DNA > dnas;
+
+    void initialize();
 };
 
 #endif

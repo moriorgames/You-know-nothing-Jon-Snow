@@ -9,6 +9,6 @@ add_library(
         MoriorGames/Parsers/FileParser.cpp
         MoriorGames/Parsers/JsonParser.cpp
         MoriorGames/Services/FitnessCalculator.cpp
-)
+        MoriorGames/Services/Mutator.cpp MoriorGames/Services/Mutator.h)
 
 target_link_libraries(moriorgames_dna)
