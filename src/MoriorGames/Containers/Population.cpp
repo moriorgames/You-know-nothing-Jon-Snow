@@ -21,24 +21,22 @@ void Population::process()
         printf("==: Generation %i Population %lu\n", generation, dnas.size());
 
         calculateFitness();
+
+        // Evaluate
+        for (auto dna:dnas) {
+            if (dna->getFitness() >= 0.98) {
+                printf("==== We found the perfect solution at Generation %i==\n", generation);
+                generation = config->getMaxGenerations();
+                dna->print();
+                break;
+            }
+        }
+
         environmentExtinction();
 
         printBest();
 
         newGeneration();
-
-//        // Evaluate
-//        for (auto dna:dnas) {
-//            auto fitness = fitnessCalculator.calculate(dna);
-//            dna->setFitness(fitness);
-//            dna->print();
-//            if (fitness == 1) {
-//                printf("==== We found the perfect solution at Generation %i==\n", generation);
-//                generation = config->getMaxGenerations();
-//                dna->print();
-//                break;
-//            }
-//        }
     }
 
     clock_t end = clock();
@@ -90,27 +88,32 @@ void Population::newGeneration()
         int mother = Randomizer::randomize(0, matingPool.size() - 1);
 
         // Each couple has between N child
-        for (int j = 0; j < config->getReproduction(); ++j) {
+        for (int j = 1; j <= 2; ++j) {
             // Pick 2 parents and update a child
             auto child = new DNA(geneticSize);
+            bool odd = true;
             for (int k = 0; k < geneticSize; ++k) {
                 char gen;
                 if (j % 2 == 0) {
-                    if (k % 2 == 0) {
+                    if (odd) {
                         gen = dnas[matingPool[father]]->getGenes()[k];
+                        odd = false;
                     } else {
                         gen = dnas[matingPool[mother]]->getGenes()[k];
+                        odd = true;
                     }
                 } else {
-                    if (k % 2 == 0) {
-                        gen = dnas[matingPool[mother]]->getGenes()[k];
-                    } else {
+                    if (!odd) {
                         gen = dnas[matingPool[father]]->getGenes()[k];
+                        odd = true;
+                    } else {
+                        gen = dnas[matingPool[mother]]->getGenes()[k];
+                        odd = false;
                     }
                 }
                 child->setGene(k, gen);
-                mutator->mutate(child, config->getMutationRate());
             }
+            mutator->mutate(child, config->getMutationRate());
             newGeneration.push_back(child);
         }
     }
@@ -125,7 +128,7 @@ std::vector<int> Population::matingPoolCreator()
     std::vector<int> matingPool;
 
     for (int index = 0; index < dnas.size(); ++index) {
-        int matingPoolRatio = ceil(config->getPopulation() * dnas[index]->getFitness());
+        int matingPoolRatio = config->getEnvironment() * dnas[index]->getFitness();
         for (int i = 0; i < matingPoolRatio; ++i) {
             matingPool.push_back(index);
         }

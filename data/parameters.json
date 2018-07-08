@@ -1,8 +1,8 @@
 {
   "target": "you know nothing, jon snow",
-  "population": 50,
-  "maxGenerations": 200,
-  "mutationRate": 2,
-  "reproduction": 2,
-  "environment": 10
+  "population": 150,
+  "maxGenerations": 500,
+  "mutationRate": 1,
+  "reproduction": 3,
+  "environment": 20
 }
