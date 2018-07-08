@@ -9,6 +9,8 @@ add_library(
         MoriorGames/Parsers/FileParser.cpp
         MoriorGames/Parsers/JsonParser.cpp
         MoriorGames/Services/FitnessCalculator.cpp
-        MoriorGames/Services/Mutator.cpp MoriorGames/Services/Mutator.h MoriorGames/Services/NaturalSelection.cpp MoriorGames/Services/NaturalSelection.h MoriorGames/Services/Randomizer.cpp MoriorGames/Services/Randomizer.h)
+        MoriorGames/Services/Mutator.cpp
+        MoriorGames/Services/Randomizer.cpp
+)
 
 target_link_libraries(moriorgames_dna)

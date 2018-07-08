@@ -14,8 +14,11 @@ public:
     void process();
 
 private:
-    Configuration *configuration;
+    Configuration *config;
     FitnessCalculator fitnessCalculator;
+
+    std::vector<int> matingPoolCreator(std::vector<DNA *> dnas);
+    std::vector<DNA *> newGeneration(std::vector<DNA *> dnas, std::vector<int> matingPool);
 };
 
 #endif
