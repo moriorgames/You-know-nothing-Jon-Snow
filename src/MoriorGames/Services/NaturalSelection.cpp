@@ -1,35 +1,64 @@
 #include "NaturalSelection.h"
 #include "Randomizer.h"
+#include <cmath>
 
-void NaturalSelection::execute(std::vector<DNA *> dnas, int population)
+std::vector<DNA *> NaturalSelection::execute(std::vector<DNA *> dnas, Configuration *config)
 {
-    matingPool.clear();
-    // Create the mating pool from fitness dnas
+    int geneticSize = config->getTarget().size();
+    std::vector<DNA *> newGeneration;
 
+    // Create the mating pool from fitness dna
     for (int index = 0; index < dnas.size(); ++index) {
-        int matingPoolRatio = population * dnas[index]->getFitness();
+        int matingPoolRatio = ceil(config->getPopulation() * dnas[index]->getFitness());
         for (int i = 0; i < matingPoolRatio; ++i) {
             matingPool.push_back(index);
         }
     }
 
-    int geneticSize = dnas[0]->getGenes().size();
+    std::random_shuffle(matingPool.begin(), matingPool.end());
 
-    for (int index = 0; index < population; ++index) {
-        // Pick 2 parents and update a child
-        int father = Randomizer::randomize(0, matingPool.size() - 1);
-        int mother = Randomizer::randomize(0, matingPool.size() - 1);
-        for (int i = 0; i < geneticSize; ++i) {
-            char gen;
-            if (i % 2 == 0) {
-                gen = dnas[matingPool[father]]->getGenes()[i];
+    bool hasChild = false;
+    int father = 0;
+    int mother = 0;
+    for (int k = 0; k < matingPool.size(); ++k) {
+        if (k <= config->getEnvironment()) {
+            if (hasChild) {
+                mother = matingPool[k];
+
+                // Each couple has between 1 and 3 child
+                for (int j = 0; j < Randomizer::randomize(1, config->getReproduction()); ++j) {
+                    // Pick 2 parents and update a child
+                    auto child = new DNA(geneticSize);
+                    for (int i = 0; i < geneticSize; ++i) {
+                        char gen;
+                        if (j % 2 == 0) {
+                            if (i % 2 == 0) {
+                                gen = dnas[father]->getGenes()[i];
+                            } else {
+                                gen = dnas[mother]->getGenes()[i];
+                            }
+                        } else {
+                            if (i % 2 == 0) {
+                                gen = dnas[mother]->getGenes()[i];
+                            } else {
+                                gen = dnas[father]->getGenes()[i];
+                            }
+                        }
+                        child->setGene(i, gen);
+                    }
+                    newGeneration.push_back(child);
+                }
+
+                hasChild = false;
             } else {
-                gen = dnas[matingPool[mother]]->getGenes()[i];
+                father = matingPool[k];
+                hasChild = true;
             }
-            dnas[index]->setGene(i, gen);
-        }
-        if (index < population / 5) {
-            printf("- Gen: %s Fitness: %f\n", dnas[index]->getPhrase().c_str(), dnas[index]->getFitness());
         }
     }
+
+    dnas.clear();
+    matingPool.clear();
+
+    return newGeneration;
 }

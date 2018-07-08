@@ -16,7 +16,7 @@ void Mutator::mutate(DNA *dna, int mutationRate)
 }
 char Mutator::getRandomChar()
 {
-    char ALLOWED_CHARS[] = "abcdefghijklmnomprstuvwxyz ,";
+    char ALLOWED_CHARS[] = "abcdefghijklmnopqrstuvwxyz ,";
 
     return ALLOWED_CHARS[Randomizer::randomize(0, strlen(ALLOWED_CHARS))];
 }

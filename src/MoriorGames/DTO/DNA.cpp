@@ -33,3 +33,8 @@ std::string DNA::getPhrase()
 
     return phrase;
 }
+
+void DNA::print()
+{
+    printf("- genes: %s Fitness: %f\n", getPhrase().c_str(), getFitness());
+}

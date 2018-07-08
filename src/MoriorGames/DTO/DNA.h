@@ -13,10 +13,11 @@ public:
     double getFitness() const;
     void setFitness(double fitness);
     std::string getPhrase();
+    void print();
 
 private:
     std::vector<char> genes;
-    double fitness;
+    double fitness = 0;
 };
 
 #endif
