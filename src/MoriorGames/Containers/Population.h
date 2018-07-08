@@ -6,6 +6,7 @@
 #include "../DTO/Configuration.h"
 #include "../DTO/DNA.h"
 #include "../Services/FitnessCalculator.h"
+#include "../Services/Mutator.h"
 
 class Population
 {
@@ -14,11 +15,19 @@ public:
     void process();
 
 private:
+    std::vector<DNA *> dnas;
     Configuration *config;
     FitnessCalculator fitnessCalculator;
+    Mutator *mutator;
 
-    std::vector<int> matingPoolCreator(std::vector<DNA *> dnas);
-    std::vector<DNA *> newGeneration(std::vector<DNA *> dnas, std::vector<int> matingPool);
+    void initialize();
+    void calculateFitness();
+    void sortByFitness();
+    void environmentExtinction();
+    void newGeneration();
+    std::vector<int> matingPoolCreator();
+
+    void printBest();
 };
 
 #endif
