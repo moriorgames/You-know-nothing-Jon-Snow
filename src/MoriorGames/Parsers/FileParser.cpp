@@ -15,6 +15,7 @@ Configuration *FileParser::parse()
             getInt(document, "maxGenerations"),
             getInt(document, "mutationRate"),
             getInt(document, "reproduction"),
+            getInt(document, "extinction"),
             getInt(document, "environment")
         );
     }

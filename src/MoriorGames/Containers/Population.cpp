@@ -70,7 +70,7 @@ void Population::sortByFitness()
 void Population::environmentExtinction()
 {
     int size = dnas.size();
-    int extincion = ceil(config->getEnvironment() * 0.01 * size);
+    int extincion = ceil(config->getExtinction() * 0.01 * size);
     dnas.resize(size - extincion);
 }
 
@@ -85,7 +85,7 @@ void Population::newGeneration()
         int mother = Randomizer::randomize(0, matingPool.size() - 1);
 
         // Each couple has between N child
-        for (int j = 1; j <= 2; ++j) {
+        for (int j = 1; j <= Randomizer::randomize(1, config->getReproduction()); ++j) {
             // Pick 2 parents and update a child
             auto child = new DNA(geneticSize);
             bool odd = true;

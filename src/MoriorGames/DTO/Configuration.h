@@ -7,13 +7,20 @@ class Configuration
 {
 public:
     Configuration(
-        std::string target, int population, int maxGenerations, int mutationRate, int reproduction, int environment
+        std::string target,
+        int population,
+        int maxGenerations,
+        int mutationRate,
+        int reproduction,
+        int extinction,
+        int environment
     );
     const std::string &getTarget() const;
     int getPopulation() const;
     int getMaxGenerations() const;
     int getMutationRate() const;
     int getReproduction() const;
+    int getExtinction() const;
     int getEnvironment() const;
     void print();
 
@@ -23,6 +30,7 @@ private:
     int maxGenerations;
     int mutationRate;
     int reproduction;
+    int extinction;
     int environment;
 };
 

@@ -4,5 +4,6 @@
   "maxGenerations": 500,
   "mutationRate": 1,
   "reproduction": 3,
-  "environment": 20
+  "extinction": 70,
+  "environment": 30
 }
