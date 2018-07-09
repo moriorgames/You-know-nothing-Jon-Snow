@@ -22,15 +22,7 @@ void Population::process()
 
         calculateFitness();
 
-        // Evaluate
-        for (auto dna:dnas) {
-            if (dna->getFitness() >= 0.98) {
-                printf("==== We found the perfect solution at Generation %i==\n", generation);
-                generation = config->getMaxGenerations();
-                dna->print();
-                break;
-            }
-        }
+        generation = evaluate(generation);
 
         environmentExtinction();
 
@@ -142,4 +134,19 @@ void Population::printBest()
     for (int i = 0; i < 20; ++i) {
         dnas[i]->print();
     }
+}
+
+int Population::evaluate(int generation)
+{
+    // Evaluate
+    for (auto dna:dnas) {
+        if (dna->getFitness() == 1) {
+            printf("==== We found the perfect solution at Generation %i ==\n", generation);
+            generation = config->getMaxGenerations();
+            dna->print();
+            break;
+        }
+    }
+
+    return generation;
 }

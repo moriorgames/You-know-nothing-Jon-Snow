@@ -23,6 +23,7 @@ private:
     void initialize();
     void calculateFitness();
     void sortByFitness();
+    int evaluate(int generation);
     void environmentExtinction();
     void newGeneration();
     std::vector<int> matingPoolCreator();
