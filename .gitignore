@@ -22,7 +22,7 @@ MoriorGamesDNA.cbp
 src/libmoriorgames_dna.a
 main
 tests/testsuite
-result.csv
+data/log*
 
 # Code coverage helper files
 .gcda

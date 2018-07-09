@@ -15,6 +15,7 @@ public:
     void process();
 
 private:
+    std::string logFileName = "";
     std::vector<DNA *> dnas;
     Configuration *config;
     FitnessCalculator fitnessCalculator;

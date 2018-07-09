@@ -3,6 +3,7 @@
 #include <cmath>
 #include <string>
 #include <ctime>
+#include <fstream>
 
 Population::Population(Configuration *configuration)
     : fitnessCalculator(configuration->getTarget()), config{configuration}
@@ -16,9 +17,11 @@ void Population::process()
 
     initialize();
 
+    std::ofstream logFile(logFileName, std::ios_base::out | std::ios_base::app);
     for (int generation = 0; generation < config->getMaxGenerations(); ++generation) {
 
         printf("==: Generation %i Population %lu\n", generation, dnas.size());
+        logFile << "==: Generation " << generation << " Population: " << dnas.size() << std::endl;
 
         calculateFitness();
 
@@ -34,10 +37,12 @@ void Population::process()
     clock_t end = clock();
     double elapsedTime = double(end - begin) / CLOCKS_PER_SEC;
     printf("\nElapsed time %f\n", elapsedTime);
+    logFile << "Elapsed time " << elapsedTime << std::endl;
 }
 
 void Population::initialize()
 {
+    logFileName = "data/log" + std::to_string(long(std::time(nullptr))) + ".txt";
     for (int i = 0; i < config->getPopulation(); ++i) {
         auto dna = new DNA(config->getTarget().length());
         dnas.push_back(dna);
@@ -131,8 +136,11 @@ std::vector<int> Population::matingPoolCreator()
 
 void Population::printBest()
 {
-    for (int i = 0; i < 20; ++i) {
+    std::ofstream logFile(logFileName, std::ios_base::out | std::ios_base::app);
+
+    for (int i = 0; i < 10; ++i) {
         dnas[i]->print();
+        logFile << "Genes: " << dnas[i]->getPhrase() << " Fitness: " << dnas[i]->getFitness() << std::endl;
     }
 }
 
