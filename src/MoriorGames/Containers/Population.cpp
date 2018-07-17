@@ -1,7 +1,7 @@
 #include "Population.h"
 #include "../Services/Randomizer.h"
 #include <cmath>
-#include <string>
+#include <algorithm>
 #include <ctime>
 #include <fstream>
 

@@ -1,5 +1,6 @@
 #include "Mutator.h"
 #include "Randomizer.h"
+#include <cstring>
 
 void Mutator::mutate(DNA *dna, int mutationRate)
 {
